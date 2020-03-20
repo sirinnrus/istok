@@ -3,8 +3,6 @@ import visa # PyVisa info @ http://PyVisa.readthedocs.io/en/stable/
 import time
 import struct
 import numpy as np
-import scipy as sp
-import matplotlib.pyplot as plt
 import time
 import pyvisa
 
