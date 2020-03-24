@@ -17,7 +17,9 @@ def dso_receive_data(rm, adress="TCPIP::192.168.4.16", points=1000, tout=1000):
     except Exception:
         print("Unable to connect to oscilloscope at " + str(SCOPE_VISA_ADDRESS) + ". Aborting script.\n")
         sys.exit()
-
+    #Особенность осциллографа? Ошибки при отправке запроса и определение метки конца сообщения
+    KsInfiniiVisionX.read_termination = '\n'
+    KsInfiniiVisionX.write_termination = '\n'
     KsInfiniiVisionX.timeout = GLOBAL_TOUT
     KsInfiniiVisionX.clear()
 
@@ -143,5 +145,6 @@ if __name__ == '__main__':
     rm = pyvisa.ResourceManager()
     #В параметрах функции необходимо задать значения, для изменения параметров по умолчанию
     #Если все команды выполнятся успешно, произведется запись файла
-    dso(rm)
+    adress = 'TCPIP::192.168.4.16'
+    dso_receive_data(rm, adress=adress)
     
